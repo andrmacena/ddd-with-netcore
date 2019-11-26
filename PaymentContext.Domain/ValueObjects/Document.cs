@@ -13,7 +13,7 @@ namespace PaymentContext.Domain.ValueObjects
 
             AddNotifications(new Contract()
             .Requires()
-            .IsTrue(Validate(), number, "Documento inválido"));
+            .IsTrue(Validate(), Number, "Documento inválido"));
         }
 
         public string Number { get; private set; }

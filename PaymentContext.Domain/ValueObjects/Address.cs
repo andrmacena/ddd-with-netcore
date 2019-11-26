@@ -17,7 +17,7 @@ namespace PaymentContext.Domain.ValueObjects
 
             AddNotifications(new Contract()
             .Requires()
-            .HasMinLen(street, 7, street, "A rua deve conter no mínimo 7 caracteres"));
+            .HasMinLen(Street, 7, Street, "A rua deve conter no mínimo 7 caracteres"));
         }
 
         public string Street { get; private set; }
