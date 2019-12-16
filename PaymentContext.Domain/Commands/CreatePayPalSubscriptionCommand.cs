@@ -1,11 +1,13 @@
 using System;
+using Flunt.Notifications;
+using Flunt.Validations;
 using PaymentContext.Domain.Enums;
 using PaymentContext.Domain.ValueObjects;
 using PaymentContext.Shared.Commands;
 
 namespace PaymentContext.Domain.Commands
 {
-    public class CreatePayPalSubscriptionCommand: ICommand
+    public class CreatePayPalSubscriptionCommand : Notifiable, ICommand
     {
         //classe que auxilia na criação de uma subscription
         //portanto, nela contém todas as propriedades para criar uma subscription
@@ -38,7 +40,10 @@ namespace PaymentContext.Domain.Commands
 
         public void Validate()
         {
-            throw new NotImplementedException();
+            AddNotifications(new Contract()
+            .Requires()
+            .HasMinLen(FirstName, 3, FirstName, "O nome deve conter no mínimo 3 caracteres")
+            .HasMinLen(LastName, 3, LastName, "O sobrenome deve conter no mínimo 3 caracteres"));
         }
     }
 
