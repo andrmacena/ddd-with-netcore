@@ -16,6 +16,16 @@ namespace PaymentContext.Tests.Commands
 
             Assert.IsTrue(command.Invalid);
         }
+
+        [TestMethod]
+        public void ShouldReturnErrorWhenLastNameIsInvalid()
+        {
+            var command = new CreateBoletoSubscriptionCommand();
+            command.LastName = "";
+            command.Validate();
+
+            Assert.IsTrue(command.Invalid);
+        }
     }
 
 
